@@ -24,7 +24,12 @@ h2 {
   text-align: left;
 }
 
-
+#playerCards,
+#dealerCards {
+	display: flex;
+	margin-bottom: 30px;
+	min-height: 110px;
+}
 
 #buttons {
   text-align: center;
@@ -49,4 +54,5 @@ h2 {
   margin: 0 50px;
   padding: 10px 30px;
   font-weight: 600;
+  cursor: pointer;
 }
