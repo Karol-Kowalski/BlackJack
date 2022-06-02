@@ -17,9 +17,9 @@ export class Hand {
     if(this.countsCardsByWeight('A') == 2 && this.cards.length ==2) {
       return 21;
     }
-
+    
     const cards = this.cards.map(card => {
-      if (['K', 'Q', 'J'].inludes(card.weight)) {
+      if (['K', 'Q', 'J'].includes(card.weight)) {
         return 10;
       }
 
