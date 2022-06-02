@@ -1,9 +1,11 @@
 import { Deck } from './Deck.js'
+import { Message } from './Message.js';
 import { Player } from './Player.js';
 import { Table } from './Table.js';
 
 class Game {
-  constructor({player, table, hitButton, standButton, playerPoints, dealerPoints}) {
+  constructor({player, table, hitButton, standButton, playerPoints, dealerPoints, messageBox}) {
+    this.messageBox = messageBox;
     this.hitButton = hitButton;
     this.standButton = standButton;
     this.playerPoints = playerPoints;
@@ -61,23 +63,27 @@ class Game {
     this.hitButton.removeEventListener('click', (ecent) => this.hitCard())
     this.standButton.removeEventListener('click', (ecent) => this.dealerPlays())
     
+    this.hitButton.display = 'hidden'
+    this.standButton.display = 'hidden'
+
     if(this.player.points < 21 && this.player.points == this.dealer.points) {
-      console.log('remis');
-      return
+      this.messageBox.setText('Remis').show();
+      return;
     }
-
+    
     if(this.player.points > 21) {
-      console.log('wygrywa dealer');
-      return
+      this.messageBox.setText('wygrywa').show();
+      return;
     }
-
+    
     if(this.dealer.points > 21) {
-      console.log('wygrywa player');
-      return
+      this.messageBox.setText('wygrywa').show();
+      return;
     }
-
+    
     if(this.player.points < this.dealer.points) {
-      console.log('wygrywa dealer');
+      this.messageBox.setText('dealer').show();
+      return;
     }
   }
 }
@@ -86,6 +92,7 @@ const table = new Table({
   playerCards: document.getElementById('playerCards'),
   dealerCards: document.getElementById('dealerCards'),
 })
+const messageBox = new Message(document.getElementById('message'));
 const player = new Player('Karol');
 const game = new Game({
   hitButton: document.getElementById('hit'),
@@ -93,7 +100,8 @@ const game = new Game({
   dealerPoints: document.getElementById('dealerPoints'),
   playerPoints: document.getElementById('playerPoints'),
   player,
-  table
+  table,
+  messageBox,
 });
 
 game.run();
