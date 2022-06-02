@@ -54,6 +54,31 @@ class Game {
       this.dealerPoints.innerHTML = this.dealer.calculatePoints();
     }
 
+    this.endTheGame();
+  }
+
+  endTheGame() {
+    this.hitButton.removeEventListener('click', (ecent) => this.hitCard())
+    this.standButton.removeEventListener('click', (ecent) => this.dealerPlays())
+    
+    if(this.player.points < 21 && this.player.points == this.dealer.points) {
+      console.log('remis');
+      return
+    }
+
+    if(this.player.points > 21) {
+      console.log('wygrywa dealer');
+      return
+    }
+
+    if(this.dealer.points > 21) {
+      console.log('wygrywa player');
+      return
+    }
+
+    if(this.player.points < this.dealer.points) {
+      console.log('wygrywa dealer');
+    }
   }
 }
 
