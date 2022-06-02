@@ -20,8 +20,8 @@ class Game {
   }
 
   run() {
-    this.hitButton.addEventListener('click', (event) => this.hitCard())
-    this.standButton.addEventListener('click', (event) => this.dealerPlays())
+    this.hitButton.addEventListener('click', (event) => this.hitCard());
+    this.standButton.addEventListener('click', (event) => this.dealerPlays());
     this.dealCards();
   }
 
@@ -39,12 +39,12 @@ class Game {
     this.playerPoints.innerHTML = this.player.calculatePoints();
     this.dealerPoints.innerHTML = this.dealer.calculatePoints();
   }
-
+  
   hitCard() {
     const playerCard = this.deck.pickOne()
     this.player.hand.addCard(playerCard);
     this.table.showPlayerCard(playerCard);
-
+    
     this.playerPoints.innerHTML = this.player.calculatePoints();
   }
 
@@ -55,16 +55,15 @@ class Game {
       this.table.showDealerCard(dealerCard);
       this.dealerPoints.innerHTML = this.dealer.calculatePoints();
     }
-
+    
     this.endTheGame();
   }
-
+  
   endTheGame() {
-    this.hitButton.removeEventListener('click', (ecent) => this.hitCard())
-    this.standButton.removeEventListener('click', (ecent) => this.dealerPlays())
-    
-    this.hitButton.display = 'hidden'
-    this.standButton.display = 'hidden'
+    this.hitButton.removeEventListener('click', (event) => this.hitCard());
+    this.standButton.removeEventListener('click', (event) => this.dealerPlays())
+    this.hitButton.style.display = "none";
+    this.standButton.style.display = 'none';
 
     if(this.player.points < 21 && this.player.points == this.dealer.points) {
       this.messageBox.setText('Remis').show();
@@ -72,17 +71,17 @@ class Game {
     }
     
     if(this.player.points > 21) {
-      this.messageBox.setText('wygrywa').show();
+      this.messageBox.setText('Wygrywa Dealer').show();
       return;
     }
     
     if(this.dealer.points > 21) {
-      this.messageBox.setText('wygrywa').show();
+      this.messageBox.setText('Wygrywa Player').show();
       return;
     }
     
     if(this.player.points < this.dealer.points) {
-      this.messageBox.setText('dealer').show();
+      this.messageBox.setText('Wygrywa Dealer').show();
       return;
     }
   }

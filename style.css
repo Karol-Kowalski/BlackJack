@@ -8,6 +8,16 @@ h2 {
   color: #fff;
 }
 
+.hearts,
+.diamonds {
+	color: #ff0000;
+}
+
+.spades,
+.clubs {
+	color: #000;
+}
+
 #blackJack {
   width: 800px;
   margin: 20px auto;
@@ -29,6 +39,14 @@ h2 {
 	display: flex;
 	margin-bottom: 30px;
 	min-height: 110px;
+}
+
+.card {
+  background: #fff;
+  width: 40px;
+  padding: 40px 20px;
+  font-weight: 600;
+  margin: 10px;
 }
 
 #buttons {
@@ -55,4 +73,20 @@ h2 {
   padding: 10px 30px;
   font-weight: 600;
   cursor: pointer;
+}
+
+#message {
+	display: none;
+	z-index: 9999;
+	position: absolute;
+	top: 300px;
+	width: 100%;
+	padding: 50px 100px;
+	background-color: rgba(255, 255, 255, 0.95);
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+	-webkit-box-shadow: -1px 14px 73px -22px rgba(0, 0, 0, 0.56);
+	-moz-box-shadow: -1px 14px 73px -22px rgba(0, 0, 0, 0.56);
+	box-shadow: -1px 14px 73px -22px rgba(0, 0, 0, 0.56);
 }

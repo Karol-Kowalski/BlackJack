@@ -10,10 +10,10 @@ export class Message {
   }
 
   show() {
-    this.element.style.diplay = 'block';
+    this.element.style.display = 'block';
   }
 
   hide() {
-    this.element.style.diplay = 'hidden';
+    this.element.style.display = 'none';
   }
 }
