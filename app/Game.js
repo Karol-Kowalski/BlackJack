@@ -1,5 +1,7 @@
 import { Deck } from './Deck.js'
+import { Player } from './Player.js';
 
-const deck = new Deck;
+const player = new Player();
+const deck = new Deck();
 deck.shuffle();
 console.log(deck);

@@ -18,5 +18,6 @@ export class Deck {
       this.cards[i] = this.cards[j];
       this.cards[j] = temp;
     }
+    return this.cards;
   }
 }
