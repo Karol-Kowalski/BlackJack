@@ -1,13 +1,13 @@
 import { Deck } from './Deck.js'
 import { Player } from './Player.js';
+import { Table } from './Table.js';
 
 class Game {
-  constructor({playerCards, dealerCards, player}) {
+  constructor({player, table}) {
     this.player = player;
     this.dealer = new Player('Krupier');
 
-    this.playerCards = playerCards;
-    this.dealerCards = dealerCards;
+    this.table = table,
     this.deck = new Deck();
     this.deck.shuffle();
   }
@@ -20,20 +20,23 @@ class Game {
     for (let n=0; n<2; n++) {
       let playerCard = this.deck.pickOne();
       this.player.hand.addCard(playerCard);
-      this.playerCards.appendChild(playerCard.render());
+      this.table.showPlayerCard(playerCard.render());
       
       let dealerCard = this.deck.pickOne();
       this.dealer.hand.addCard(dealerCard);
-      this.dealerCards.appendChild(dealerCard.render());
+      this.table.showDealerCard(dealerCard.render());
     }
   }
 }
 
+const table = new Table({
+  playerCards: document.getElementById('playerCards'),
+  dealerCards: document.getElementById('dealerCards'),
+})
 const player = new Player('Karol');
 const game = new Game({
   player,
-  playerCards: document.getElementById('playerCards'),
-  dealerCards: document.getElementById('dealerCards'),
+  table
 });
 
 game.run();
